@@ -1,0 +1,24 @@
+import pandas as pd
+import json
+
+# Lê o arquivo JSON com os dados de faturamento
+with open('dados_faturamento.json') as file:
+    dados = json.load(file)
+
+# Cria um DataFrame a partir dos dados
+df = pd.DataFrame(dados)
+
+# Calcula o menor e o maior valor de faturamento
+menor_valor = df['valor'].min()
+maior_valor = df['valor'].max()
+
+# Calcula a média mensal, excluindo os dias sem faturamento
+media_mensal = df[df['valor'] > 0]['valor'].mean()
+
+# Calcula o número de dias em que o faturamento foi superior à média mensal
+dias_acima_da_media = len(df[df['valor'] > media_mensal])
+
+# Imprime os resultados
+print(f"Menor valor de faturamento: R$ {menor_valor:.2f}")
+print(f"Maior valor de faturamento: R$ {maior_valor:.2f}")
+print(f"Número de dias com faturamento acima da média mensal: {dias_acima_da_media}")
