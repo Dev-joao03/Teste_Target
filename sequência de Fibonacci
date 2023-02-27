@@ -1,0 +1,15 @@
+numero = int(input("Digite um número: "))
+
+# Inicializa a sequência de Fibonacci com os dois primeiros valores
+fibonacci = [0, 1]
+
+# Calcula a sequência de Fibonacci até encontrar um número maior ou igual ao número informado
+while fibonacci[-1] < numero:
+    proximo_valor = fibonacci[-1] + fibonacci[-2]
+    fibonacci.append(proximo_valor)
+
+# Verifica se o número informado pertence ou não à sequência
+if numero in fibonacci:
+    print(f"O número {numero} pertence à sequência de Fibonacci!")
+else:
+    print(f"O número {numero} não pertence à sequência de Fibonacci.")
